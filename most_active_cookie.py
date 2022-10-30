@@ -6,7 +6,7 @@ parser.add_argument("log", type = argparse.FileType('r'), metavar = '', help = '
 parser.add_argument("-d", "--date", type = str, metavar = '', help = 'Date in 0000-00-00 (year, month, day) format as string')
 args = parser.parse_args()
 
-if __name__ == '__main__':
+def main():
     # assume that date -d will always be given (?)
     with args.log as log:
         cookies = {} # dictionary of cookies on the specified date and their count 
@@ -37,6 +37,12 @@ if __name__ == '__main__':
         # join freq_cookies into multiline string
         all_cookies = "\n".join(freq_cookies)
         print(all_cookies)
+        return(all_cookies)
+
+if __name__ == '__main__':
+    main()
+    
+    
     
 
                 
