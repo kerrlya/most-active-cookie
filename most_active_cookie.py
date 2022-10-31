@@ -6,6 +6,7 @@ parser.add_argument("-d", "--date", type = str, metavar = '', help = 'Date in 00
 args = parser.parse_args()
 
 def input_check(log_file, date): 
+     """Input checking for arguments from command line. Creates logging errors and warnings depending on input."""
     if ".csv" not in log_file.name:
         logging.ERROR("Log file must be .csv type")
     if not date:
