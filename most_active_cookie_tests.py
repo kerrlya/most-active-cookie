@@ -2,27 +2,20 @@
 as this assignment evolves, I may need to add additional functions that require testing."""
 import unittest, subprocess
 import os
-import signal
 
 def get_cmd_output(input_cmd:str):
     """Helper to test cases in TestActiveCookie. Inputs string, returns command line string output."""
-    with subprocess.Popen(input_cmd, shell=True, stdout=subprocess.PIPE, preexec_fn=os.setsid) as cmd:
+    with subprocess.Popen(input_cmd, shell=True, stdout=subprocess.PIPE) as cmd:
         ostring =  cmd.stdout.read()
-    ostring = ostring.decode("utf-8")
-    # cmd = subprocess.Popen(input_cmd, shell=True, stdout=subprocess.PIPE, preexec_fn=os.setsid)
-
-    # ostring = cmd.stdout.read().decode("utf-8")
-    # cmd.terminate()
-   # os.killpg(os.getpgid(.pid), signal.SIGTERM)
     return ostring.decode("utf-8")
 
 
 class TestActiveCookie(unittest.TestCase):
     # given test cases in problem statement
     def test_originals(self):
-        output = get_cmd_output("./most_active_cookie testing_cookies/cookie_log.csv -d 2018-12-09")
+        output = get_cmd_output("./most_active_cookie cookie_log.csv -d 2018-12-09")
         self.assertEqual(output, "AtY0laUfhglK3lC7\n") 
-        output = get_cmd_output("./most_active_cookie testing_cookies/cookie_log.csv -d 2018-12-08")
+        output = get_cmd_output("./most_active_cookie cookie_log.csv -d 2018-12-08")
         self.assertEqual(output, "SAZuXPGUrfbcn5UA\n4sMM2LxV07bPJzwf\nfbcn5UAVanZf6UtG\n") 
 
     # custom 'base' and edge cases
