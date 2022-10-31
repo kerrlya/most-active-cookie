@@ -1,7 +1,6 @@
 """Unit testing framework for most_active_cookie. I chose to incorporate unit testing instead of integrative testing since, 
 as this assignment evolves, I may need to add additional functions that require testing."""
 import unittest, subprocess
-import os
 
 def get_cmd_output(input_cmd:str):
     """Helper to test cases in TestActiveCookie. Inputs string, returns command line string output."""
